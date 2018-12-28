@@ -36,7 +36,7 @@ const createStore = () =>
         await dispatch('getCats')
       },
       async getBlogPosts({ state, commit }) {
-        const context = await require.context('~/content/blog/posts/', false, /\.json$/);
+        const context = await require.context('../../../content/blog/posts/', false, /\.json$/);
 
         const searchposts = await context.keys().map(key => ({
           ...context(key),
@@ -51,7 +51,7 @@ const createStore = () =>
       async getPages({ state, commit }) {
 
 
-        const context = await require.context('~/content/page/posts/', false, /\.json$/);
+        const context = await require.context('../../../content/page/posts/', false, /\.json$/);
 
         const pages = await context.keys().map(key => ({
           ...context(key),
@@ -74,7 +74,7 @@ const createStore = () =>
       async getCats({ state, commit }) {
 
 
-        const context = await require.context('~/content/categories/posts/', false, /\.json$/);
+        const context = await require.context('../../../content/categories/posts/', false, /\.json$/);
 
         const pages = await context.keys().map(key => ({
           ...context(key),
@@ -87,7 +87,7 @@ const createStore = () =>
       async getTags({ state, commit }) {
 
 
-        const context = await require.context('~/content/tags/posts/', false, /\.json$/);
+        const context = await require.context('../../../content/tags/posts/', false, /\.json$/);
 
         const pages = await context.keys().map(key => ({
           ...context(key),
@@ -98,9 +98,9 @@ const createStore = () =>
 
       },
       getSiteInfo({ state, commit }) {
-        const info = require('~/content/setup/info.json');
-        const connect = require('~/content/setup/connect.json');
-        const context = require.context('~/content/blog/posts/', false, /\.json$/);
+        const info = require('../../../content/setup/info.json');
+        const connect = require('../../../content/setup/connect.json');
+        const context = require.context('../../../content/blog/posts/', false, /\.json$/);
 
         const searchposts = context.keys().map(key => ({
           ...context(key),

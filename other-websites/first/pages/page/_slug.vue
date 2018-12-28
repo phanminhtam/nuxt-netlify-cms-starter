@@ -22,7 +22,7 @@ import MdWrapper from "~/components/MdWrapper";
 
 export default {
   async asyncData({ params, app, payload, route, store }) {
-    let post = await import("~/content/page/posts/" + params.slug + ".json");
+    let post = await import("../../../../content/page/posts/" + params.slug + ".json");
     console.log(post);
     await store.commit("SET_TITLE", post.title);
     return post;

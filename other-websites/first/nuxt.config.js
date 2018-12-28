@@ -1,5 +1,3 @@
-var siteInfo = require('./content/setup/info.json');
-console.log(siteInfo)
 var glob = require('glob');
 var path = require('path');
 
@@ -22,11 +20,11 @@ module.exports = {
   */
 transition: { mode: "in-out"},
   head: {
-    title: siteInfo.sitename,
+    title: 'first website',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: siteInfo.sitedescription }
+      { hid: 'description', name: 'description', content: 'first website' }
 
     ],
     link: [
@@ -51,12 +49,12 @@ transition: { mode: "in-out"},
 
     
   },
-  manifest: {
-    name: siteInfo.sitename,
-    short_name: siteInfo.sitename,
-    description: siteInfo.sitedescription,
-    lang: 'en'
-  },
+  // manifest: {
+  //   name: siteInfo.sitename,
+  //   short_name: siteInfo.sitename,
+  //   description: siteInfo.sitedescription,
+  //   lang: 'en'
+  // },
   workbox: {
     fetch: true,
     runtimeCaching: [
@@ -111,7 +109,7 @@ function getDynamicPaths(urlFilepathTable) {
     ...Object.keys(urlFilepathTable).map(url => {
       var filepathGlob = urlFilepathTable[url];
       return glob
-        .sync(filepathGlob, { cwd: 'content' })
+        .sync(filepathGlob, { cwd: '../../content' })
         .map(filepath => `${url}/${path.basename(filepath, '.json')}`);
     })
   );

@@ -43,7 +43,7 @@
       store
     }) {
       let post = await
-      import ("~/content/blog/posts/" + params.slug + ".json");
+      import ("../../../../content/blog/posts/" + params.slug + ".json");
       console.log(post);
   
       await store.commit("SET_TITLE", post.title);
